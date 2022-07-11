@@ -1,0 +1,17 @@
+node {
+    
+    stage('github') {
+        git 'https://github.com/anilsb06/addressbook.git'
+    }
+    stage('compile') {
+        sh 'mvn compile'
+    }
+    stage('test') {
+        sh 'mvn test'
+        testresults: '**TEST*.xml'
+    }
+    stage('package') {
+        sh 'mvn package'
+        warfile:  '**/target/addressbook.war'
+    }
+}
