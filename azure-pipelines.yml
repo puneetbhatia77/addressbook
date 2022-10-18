@@ -5,18 +5,18 @@
    vmImage: 'ubuntu-latest'
 
  jobs:
-   - job: maven_build
+   - job: build
      steps:
       - script:
           mvn compile
           
-     job: maven_test
+     job: test
      steps:
       - script:
           mvn test
           testresults: '**TEST*.xml
 
-     job: maven_package
+     job: package
      steps:
       - script:
           mvn package
