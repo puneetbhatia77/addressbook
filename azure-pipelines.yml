@@ -5,7 +5,7 @@
    vmImage: 'ubuntu-latest'
 
  stages:
-   - stage: tools
+   - stage: building maven project
      jobs:
        - job: insatll_soft
          steps: 
@@ -13,8 +13,6 @@
              sudo apt update
              sudo apt install openjdk-11jdk -y
              sudo apt install maven
-   - stage: buildng
-     jobs:
        - job: build
          steps:
          - script:
