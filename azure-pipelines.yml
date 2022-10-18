@@ -9,8 +9,14 @@
      steps:
       - script:
           mvn compile
+          
+     job: maven_test
+     steps:
+      - script:
+          mvn compile
           testresults: '**TEST*.xml
-     job: maven_build
+
+     job: maven_package
      steps:
       - script:
           mvn package
