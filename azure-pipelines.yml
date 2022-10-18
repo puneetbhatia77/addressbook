@@ -4,14 +4,14 @@
  pool:
    vmImage: 'ubuntu-latest'
 
-
-stages:
-  - stage: build
-    jobs:
-      - job: maven_build
-        steps:
-        - script:
-             mvn compile
-             testresults: '**TEST*.xml
-             mvn package
-             warfile:  '**/target/addressbook.war
+ jobs:
+   - job: maven_build
+     steps:
+      - script:
+          mvn compile
+          testresults: '**TEST*.xml
+     job: maven_build
+     steps:
+      - script:
+          mvn package
+          warfile:  '**/target/addressbook.war
