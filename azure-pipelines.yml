@@ -10,9 +10,9 @@
        - job: insatll_soft
          steps: 
          - script:
-             sudo apt update
-             sudo apt install openjdk-11jdk -y
-             sudo apt install maven
+             apt update
+             apt install openjdk-11-jdk -y
+             apt install maven -y
        - job: build
          steps:
          - script:
