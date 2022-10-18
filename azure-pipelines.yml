@@ -5,14 +5,28 @@
    vmImage: 'ubuntu-latest'
 
  stages:
-  - stage: maven
-     task: Maven@3
-     inputs:
-      mavenPomFile: 'pom.xml'
-      publishJUnitResults: true
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
-      mavenVersionOption: 'Default'
-      mavenAuthenticateFeed: false
-      effectivePomSkip: false
-      sonarQubeRunAnalysis: false
+   - stage:tools
+     jobs:
+       - job: insatll_soft
+         steps: 
+         - script:
+             sudo apt update
+             sudo apt install openjdk-11jdk -y
+             sudo apt install maven
+   - stage: buildng
+     jobs:
+       - job: build
+         steps:
+         - script:
+             mvn compile
+       - job: test
+         steps:
+         - script:
+             mvn test
+             testresults: '**TEST*.xml
+       - job: package
+         steps:
+         - script:
+             mvn package
+             warfile:  '**/target/addressbook.war'
+
