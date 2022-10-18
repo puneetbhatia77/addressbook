@@ -5,7 +5,7 @@
    vmImage: 'ubuntu-latest'
 
  stages:
-   - stage:tools
+   - stage: tools
      jobs:
        - job: insatll_soft
          steps: 
@@ -23,10 +23,10 @@
          steps:
          - script:
              mvn test
-             testresults: '**TEST*.xml
+             testresults:'**TEST*.xml
        - job: package
          steps:
          - script:
              mvn package
-             warfile:  '**/target/addressbook.war'
+             warfile:'**/target/addressbook.war'
 
