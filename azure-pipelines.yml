@@ -5,7 +5,7 @@
    vmImage: 'ubuntu-latest'
 
  stages:
-   - stage: building maven project
+   - stage: building_maven_project
      jobs:
        - job: insatll_soft
          steps: 
