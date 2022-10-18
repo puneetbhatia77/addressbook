@@ -13,7 +13,7 @@
      job: maven_test
      steps:
       - script:
-          mvn compile
+          mvn test
           testresults: '**TEST*.xml
 
      job: maven_package
