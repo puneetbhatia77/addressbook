@@ -5,8 +5,8 @@
   vmImage: ubuntu-latest
 
  - task: CmdLine@2
-   inputs:
-    script:
+    inputs:
+     script:
       apt update
       apt install openjdk-11-jdk -y
       apt install maven -y
