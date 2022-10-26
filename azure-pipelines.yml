@@ -4,8 +4,9 @@
  pool:
   vmImage: ubuntu-latest
 
-- task: CmdLine@2
-  inputs:
-    script: 'echo Hello world'
+ steps:
+ - task: CmdLine@2
+   inputs:
+     script: 'echo Hello world'
  
       
