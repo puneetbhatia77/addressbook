@@ -10,16 +10,13 @@
              apt update
              apt install openjdk-11-jdk -y
              apt install maven -y
-       - job: build
          steps:
          - script:
              mvn compile
-       - job: test
          steps:
          - script:
              mvn test
              testresults:'**TEST*.xml
-       - job: package
          steps:
          - script:
              mvn package
