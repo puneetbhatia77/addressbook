@@ -6,8 +6,8 @@
 
 
  steps: 
-       - task: CmdLine@2
-  inputs:
+  - task: CmdLine@2
+    inputs:
     script: |
       apt update
       apt install openjdk-11-jdk -y
