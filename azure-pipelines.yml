@@ -10,15 +10,9 @@
              apt update
              apt install openjdk-11-jdk -y
              apt install maven -y
-         steps:
-         - script:
              mvn compile
-         steps:
-         - script:
              mvn test
-             testresults:'**TEST*.xml
-         steps:
-         - script:
+             testresults:'**TEST*.xml      
              mvn package
              warfile:'**/target/addressbook.war'
 
