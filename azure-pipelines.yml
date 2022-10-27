@@ -10,7 +10,8 @@
     - job: build
       steps:
        - script:
-          - sudo apt install maven -y
           - sudo apt openjdk-11-jdk -y
+          - sudo apt install maven -y
+  
  
       
