@@ -4,9 +4,16 @@
  pool:
   vmImage: ubuntu-latest
 
- steps:
- - task: CmdLine@2
+ - task: Maven@4
    inputs:
-     script: 'echo Hello world'
+     mavenPomFile: 'pom.xml'
+     goals: 'compile'
+     publishJUnitResults: true
+     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+     javaHomeOption: 'JDKVersion'
+     mavenVersionOption: 'Default'
+     mavenAuthenticateFeed: false
+     effectivePomSkip: false
+     sonarQubeRunAnalysis: false
  
       
