@@ -9,10 +9,12 @@
     jobs:
     - job: build
       steps:
-       - script:
-          sudo apt update
-          sudo apt install openjdk-11-jdk -y
-          sudo apt install maven -y
+      - task: CmdLine@2
+        inputs:
+          script: |
+            sudo apt-get update
+            sudo apt install openjdk-11-jdk
+            sudo apt install maven
   
  
       
