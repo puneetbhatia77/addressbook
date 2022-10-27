@@ -15,11 +15,6 @@
             sudo apt-get update
             sudo apt install openjdk-11-jdk
             sudo apt install maven
-  - stage: build_maven
-    dependsOn: soft_install
-    jobs:  
-    - job: 
-      steps:
       - task: Maven@4
         inputs:
           mavenPomFile: 'pom.xml'
@@ -30,5 +25,7 @@
           mavenAuthenticateFeed: false
           effectivePomSkip: false
           sonarQubeRunAnalysis: false
+
+      
       
       
