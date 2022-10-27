@@ -7,7 +7,7 @@
  stages:
   - stage: build_maven
     jobs:
-    - job: build
+    - job: install_soft
       steps:
       - task: CmdLine@2
         inputs:
@@ -15,8 +15,10 @@
             sudo apt-get update
             sudo apt install openjdk-11-jdk
             sudo apt install maven
+    - job: build
+      dependsOn: install_soft
+      steps:
       - task: Maven@4
-        dependsOn : CmdLine@2
         inputs:
             mavenPomFile: 'pom.xml'
             publishJUnitResults: true
