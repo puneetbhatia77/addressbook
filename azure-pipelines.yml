@@ -5,17 +5,12 @@
   vmImage: ubuntu-latest
 
  stages:
-   - stage: 
-     - task: Maven@4
-        inputs:
-          mavenPomFile: 'pom.xml'
-          goals: 'compile'
-          publishJUnitResults: true
-          testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          javaHomeOption: 'JDKVersion'
-          mavenVersionOption: 'Default'
-          mavenAuthenticateFeed: false
-          effectivePomSkip: false
-          sonarQubeRunAnalysis: false
+  - stage: build_maven
+    jobs:
+    - job: build
+      steps:
+       - script:
+          - sudo apt install maven -y
+          - sudo apt openjdk-11-jdk -y
  
       
