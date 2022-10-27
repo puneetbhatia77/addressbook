@@ -10,7 +10,7 @@
     - job: build
       steps:
        - script:
-          apt update
+          apt-get update
           apt openjdk-11-jdk -y
           apt install maven -y
   
