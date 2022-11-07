@@ -18,11 +18,10 @@
   - task: CmdLine@2
     inputs:
       script: 'mvn package'
-  
-  - task: DownloadPipelineArtifact@2
+  - task: PublishBuildArtifacts@1
     inputs:
-      buildType: 'current'
-      artifactName: 'packages'
-      targetPath: '$(/root/myagent)'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
   
       
