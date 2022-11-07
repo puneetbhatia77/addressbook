@@ -23,6 +23,6 @@
     inputs:
       buildType: 'current'
       artifactName: 'packages'
-      targetPath: '$(Pipeline.Workspace)'
+      targetPath: '$(/root/myagent)'
   
       
