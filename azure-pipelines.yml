@@ -9,13 +9,6 @@
  steps:
   - task: CmdLine@2
     inputs:
-      script: |
-        sudo apt-get update
-        sudo apt install openjdk-11-jdk
-        sudo apt install maven
-  
-  - task: CmdLine@2
-    inputs:
       script: 'mvn compile'
   
   - task: CmdLine@2
