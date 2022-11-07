@@ -2,7 +2,8 @@
  - master
 
  pool:
-  my-pool: ubuntu
+  name: default
+  vmImage: ubuntu-g-2vcpu-8gb-blr1-01
 
 
  steps:
