@@ -1,0 +1,54 @@
+----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+# Jenkins addressbook pipeline project  - https://github.com/puneetbhatia77/addressbook.git
+
+Job No.	      Job Name		             Build Steps - Invoke top level maven targets                      Post Build Action                   Report File Pattern
+                                   Maven Version       Goals                           Advanced/POM
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1.      Developer Compile       maven           compile                                   pom.xml
+  2.      Developer Code Review   maven      -P metrics pmd:pmd            addressbook_main/pom.xml         Static Analysis Tools - PMD            **/pmd.xml
+  3.      QA Unit Test		  maven           test                                      pom.xml         Publish Junit Test Result Report         **/TEST-*.xml
+  4.      QA Metric check         maven  cobertura:cobertura -Dcobertura.report.format=xml  pom.xml         Publish Cobertura Coverage Report     **/target/site/cobertura/coverage.xml
+  5.      QA Package              maven          package                                    pom.xml	   Archive the artifacts                  **/target/addressbook.war
+   
+
+Note: For 4, QA Metric Test, above configuration works for JDK8. IF you are using JDK11, delete "Invoke top level maven targets" from Build steps and replace it with below shell commands.
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+echo $JAVA_HOME
+mvn -version
+mvn -f pom.xml cobertura:cobertura -Dcobertura.report.format=xml
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------
+# Steps to switch java version
+ls -l /usr/lib/jvm
+	total 8
+	lrwxrwxrwx 1 root root   21 Jan 20 10:27 java-1.11.0-openjdk-amd64 -> java-11-openjdk-amd64
+	lrwxrwxrwx 1 root root   20 Feb 27 06:59 java-1.8.0-openjdk-amd64 -> java-8-openjdk-amd64
+	drwxr-xr-x 7 root root 4096 Apr 28 04:37 java-11-openjdk-amd64
+	drwxr-xr-x 7 root root 4096 Apr 20 11:14 java-8-openjdk-amd64
+
+sudo update-java-alternatives --list
+
+	java-1.11.0-openjdk-amd64      1111       /usr/lib/jvm/java-1.11.0-openjdk-amd64
+	java-1.8.0-openjdk-amd64       1081       /usr/lib/jvm/java-1.8.0-openjdk-amd64
+
+sudo update-alternatives --config java
+
+    Selection                 Path                                 Priority    Status
+    -----------------------------------------------------------------------------------
+    * 0            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      auto mode
+     1            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      manual mode
+     2            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      manual mode
+
+	Press <enter> to keep the current choice[*], or type selection number: 2
+	update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java to provide /usr/bin/java (java) in manual mode
+java -version
+	openjdk version "1.8.0_402"
+	OpenJDK Runtime Environment (build 1.8.0_402-8u402-ga-2ubuntu1~20.04-b06)
+	OpenJDK 64-Bit Server VM (build 25.402-b06, mixed mode)
