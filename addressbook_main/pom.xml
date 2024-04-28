@@ -500,6 +500,7 @@
                         <artifactId>cobertura-maven-plugin</artifactId>
                         <version>${cobertura.version}</version>
                         <configuration>
+			    <targetJdk>1.8</targetJdk>
                             <formats>
                                 <format>html</format>
                                 <format>xml</format>
