@@ -1,4 +1,5 @@
 ----------------------------------------------------------------------------------------------------------
+# Jenkins Plugin to be installed - Warnings Plugin for PMD, Cobertura Plugin for Cobertura
 ----------------------------------------------------------------------------------------------------------
 # Jenkins addressbook pipeline project  - https://github.com/puneetbhatia77/addressbook.git
 
@@ -6,7 +7,8 @@ Job No.	      Job Name		             Build Steps - Invoke top level maven target
                                    Maven Version       Goals                           Advanced/POM
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   1.      Developer Compile       maven           compile                                   pom.xml
-  2.      Developer Code Review   maven      -P metrics pmd:pmd            addressbook_main/pom.xml         Static Analysis Tools - PMD            **/pmd.xml
+  2.      Developer Code Review   maven      -P metrics pmd:pmd            addressbook_main/pom.xml  Record compiler warnings & static analysis results    **/pmd.xml
+                                                                                                            Static Analysis Tools - PMD
   3.      QA Unit Test		  maven           test                                      pom.xml         Publish Junit Test Result Report         **/TEST-*.xml
   4.      QA Metric check         maven  cobertura:cobertura -Dcobertura.report.format=xml  pom.xml         Publish Cobertura Coverage Report     **/target/site/cobertura/coverage.xml
   5.      QA Package              maven          package                                    pom.xml	   Archive the artifacts                  **/target/addressbook.war
