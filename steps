@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------
-# Jenkins Plugin to be installed - Warnings Plugin for PMD, Cobertura Plugin for Cobertura
+# Jenkins Plugin to be installed - Warnings Plugin for PMD, Cobertura Plugin for Cobertura, Build Pipeline Plugin
 ----------------------------------------------------------------------------------------------------------
 # Jenkins addressbook pipeline project  - https://github.com/puneetbhatia77/addressbook.git
 
