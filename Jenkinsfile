@@ -54,6 +54,11 @@ pipeline {
             steps {
                 sh 'mvn package'
             }
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/target/addressbook.war', followSymlinks: false
+                }
+            }
         }
     }
 }
