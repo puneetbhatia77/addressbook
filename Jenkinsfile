@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Code Review') {
             steps {
-                sh 'mvn pmd:pmd'
+                sh 'mvn -f addressbook_main/pom.xml pmd:pmd'
             }
             post {
                 success {
@@ -41,8 +41,13 @@ pipeline {
                     // Set JAVA_HOME if necessary
                     env.JAVA_HOME = '/usr/lib/jvm/java-1.8.0-openjdk-amd64'
                     sh 'echo $JAVA_HOME'
-                     sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'                   
+                    sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'                   
                }         
+            }
+             post {
+                success {
+                     cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/target/site/cobertura/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false
+                }
             }
          }
         stage('package') {
