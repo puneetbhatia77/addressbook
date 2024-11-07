@@ -64,7 +64,7 @@ public class TestLogger {
                         s = util.getErrorMessage(e); 
                 }
                 LOG.info(s);
-                assert(s.contains("TESTIOEXCEPTION"));  
+                assert(s.contains("TESTIOEXCEPTION));  
         }
         
         @Test
