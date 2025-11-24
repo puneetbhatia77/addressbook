@@ -230,12 +230,12 @@
 			                <limits>
 			                  <limit>
 			                    <counter>LINE</counter>
-			                    <value>COVERED_RATIO</value>
+			                    <value>COVEREDRATIO</value>
 			                    <minimum>0.80</minimum>
 			                  </limit>
 			                  <limit>
 			                    <counter>BRANCH</counter>
-			                    <value>COVERED_RATIO</value>
+			                    <value>COVEREDRATIO</value>
 			                    <minimum>0.70</minimum>
 			                  </limit>
 			                </limits>
